@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎页面</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .welcome-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px 40px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+        
+        .welcome-icon {
+            font-size: 4rem;
+            color: #6a11cb;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .welcome-text {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight {
+            color: #6a11cb;
+            font-weight: 600;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 12px;
+            padding: 15px 20px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature i {
+            font-size: 2rem;
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+        
+        .copyright {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+        }
+        
+        .copyright i {
+            margin-right: 8px;
+            color: #ffd700;
+        }
+        
+        .copyright-year {
+            font-weight: 600;
+            color: #ffd700;
+        }
+        
+        .name {
+            font-weight: 600;
+            color: #6a11cb;
+        }
+        
+        .animation-text {
+            font-size: 1.8rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .animation-text span {
+            color: #6a11cb;
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .animation-text span:after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 80%;
+            background-color: #6a11cb;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .welcome-text {
+                font-size: 1.2rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                left: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-card">
+            <div class="welcome-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            
+            <h1>欢迎您的到来</h1>
+            
+            <div class="animation-text">
+                欢迎访问<span id="typing-text"></span>
+            </div>
+            
+            <p class="welcome-text">
+                欢迎来到这个<span class="highlight">精心设计</span>的页面。我们致力于提供<span class="highlight">优质体验</span>和<span class="highlight">创新解决方案</span>，让每一位访客都能感受到我们的热情与专业。
+            </p>
+            
+            <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-star"></i>
+                        <h3>卓越品质</h3>
+                        <p>追求极致，品质保证</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>创新设计</h3>
+                        <p>前沿理念，独特视角</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <h3>用心服务</h3>
+                        <p>客户至上，用心服务</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <i class="far fa-copyright"></i>
+        <span class="copyright-year">2024-2025</span> 版权归
+        <span class="name">乔XX</span> 所有
+    </div>
+    
+    <script>
+        // 打字机效果
+        const texts = ['乔XX', '我们的网站', '这个空间'];
+        let speed = 150;
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+        
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                // 删除字符
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                speed = 80;
+            } else {
+                // 输入字符
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                speed = 150;
+            }
+            
+            // 如果文本完全输入，暂停后开始删除
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                speed = 1500; // 暂停时间
+            } 
+            // 如果文本完全删除，切换到下一个文本
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                speed = 500; // 切换文本前的暂停
+            }
+            
+            setTimeout(typeEffect, speed);
+        }
+        
+        // 页面加载完成后启动打字效果
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(typeEffect, 1000);
+            
+            // 为欢迎卡片添加微交互效果
+            const card = document.querySelector('.welcome-card');
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+            
+            // 版权信息点击效果
+            const copyright = document.querySelector('.copyright');
+            copyright.addEventListener('click', function() {
+                this.style.backgroundColor = 'rgba(106, 17, 203, 0.3)';
+                setTimeout(() => {
+                    this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
